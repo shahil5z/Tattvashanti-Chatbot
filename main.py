@@ -7,6 +7,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, Response
 from pydantic import BaseModel, field_validator
 import httpx
+from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config import N8N_WEBHOOK_URL
 from backend.rag_chain import rag_chain_with_history
@@ -15,6 +16,15 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 app = FastAPI()
+
+# Added CORS configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["https://tattvashanti.com"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 if not os.getenv("OPENAI_API_KEY") or not os.getenv("PINECONE_API_KEY"):
     raise ValueError("Missing required API keys in .env")
