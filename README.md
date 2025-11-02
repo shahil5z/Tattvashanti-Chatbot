@@ -1,4 +1,4 @@
-# TattvaShanti Chatbot (AI-Powered Conversational Assistant)
+# Tattva Shanti AI Assistant
 
 ![Python](https://img.shields.io/badge/Python-3.12-blue)
 ![Flask](https://img.shields.io/badge/Flask-Framework-orange)
